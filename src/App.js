@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { data } from "./birthday-data";
+// import FacebookLogin from "react-facebook-login";
 
 function App() {
   const [people, setPeople] = useState(data);
@@ -8,19 +9,28 @@ function App() {
     let newPerson = people.filter((person) => person.id !== id);
     setPeople(newPerson);
     console.log(data[0].age);
+    console.log("year " + new Date().getFullYear());
+    console.log("month " + new Date().getMonth());
   };
 
-  // const getAge = (dateString) => {
-  //   var today = new Date();
-  //   var birthDate = data[0].age
-  //   var age = today.getFullYear() - birthDate.getFullYear();
-  //   var m = today.getMonth() - birthDate.getMonth();
-  //   if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate()))
-  //   {
-  //     age--;
-  //   }
-  //   return age;
-  // }
+  const getAge = () => {
+    // Format: MM/DD/YYYY
+    for (let i = 0; i < data.length; i++) {
+      let birthDate = new Date(data[i].age);
+      let otherDate = new Date();
+
+      var years = otherDate.getFullYear() - birthDate.getFullYear();
+
+      if (
+        otherDate.getMonth() < birthDate.getMonth() ||
+        (otherDate.getMonth() === birthDate.getMonth() &&
+          otherDate.getDate() < birthDate.getDate())
+      ) {
+        years--;
+      }
+      return years;
+    }
+  };
 
   return (
     <>
@@ -43,7 +53,7 @@ function App() {
 
               <div>
                 <h3>
-                  {name} - {age} Years Old
+                  {name} - {getAge()} Years Old
                 </h3>
               </div>
             </div>
@@ -60,3 +70,5 @@ function App() {
 }
 
 export default App;
+
+// Sort out birthday function which calculate age based on Date.now and the date format person is born in
