@@ -1,3 +1,4 @@
+// Date Format: MM/DD/YYYY
 export const data = [
   {
     id: 1,
@@ -5,7 +6,6 @@ export const data = [
     image:
       "https://images.pexels.com/photos/2951142/pexels-photo-2951142.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     age: "01/31/1996",
-    // Format: MM/DD/YYYY
   },
   {
     id: 2,
@@ -59,3 +59,30 @@ export const data = [
 ];
 
 // Try and see if you can implement facebook data (API) into birthdays
+
+// const getAge = () => {
+//     // var arrayLength = data.length;
+//     // for (var i = 0; i < arrayLength; i++) {
+//     // console.log(data[0]);
+//     people.map((id, index) => {
+//       var dateOfBirth = id.age;
+
+//       // console.log(dateOfBirth);
+//       console.log(data[0].age);
+
+//       let birthDate = new Date(data[0].age);
+//       let otherDate = new Date();
+
+//       var years = otherDate.getFullYear() - birthDate.getFullYear();
+
+//       if (
+//         otherDate.getMonth() < birthDate.getMonth() ||
+//         (otherDate.getMonth() === birthDate.getMonth() &&
+//           otherDate.getDate() < birthDate.getDate())
+//       ) {
+//         years--;
+//       }
+//       return years;
+//     });
+//     // }
+//   };

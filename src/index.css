@@ -37,14 +37,21 @@ h3 {
   letter-spacing: 1px;
 }
 
+h4 {
+  color: grey;
+  font-size: 16px;
+  margin-left: 25px;
+  letter-spacing: 1px;
+}
+
 .container {
   display: flex;
   align-items: center;
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: 10px;
   margin: 10px auto;
   padding: 10px;
-  border:2px solid black;
+  box-shadow: 2px 2px 2px 4px rgba(0,0,0,0.6);
 }
 
 .container .avatar {
@@ -58,8 +65,8 @@ h3 {
 
 .container .button .btn {
   background-color: white;
-  border: 1px solid black;
   border-radius: 4%;
+  border: 1px solid black;
   padding: 5px;
   color: black;
   cursor: pointer;
@@ -80,10 +87,13 @@ h3 {
   color: black;
   cursor: pointer;
   transition: .3s ease-out;
+  margin:auto;
+  display:block;
 }
 
 .btn:hover  {
-  background-color: wheat;
+  background-color: #0053ba;
+  color: white;
   transition: .3s ease-in;
 }
 
