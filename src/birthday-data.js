@@ -5,7 +5,7 @@ export var data = [
     name: "Alesha Clifford",
     image:
       "https://images.pexels.com/photos/2951142/pexels-photo-2951142.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    age: "01/31/1996",
+    age: "02/15/1999",
   },
   {
     id: 2,
@@ -57,5 +57,3 @@ export var data = [
     age: "11/20/1999",
   },
 ];
-
-// Try and see if you can implement facebook data (API) into birthdays

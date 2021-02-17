@@ -10,6 +10,7 @@ function App() {
     setPeople(newPerson);
   }
 
+  // Get function working
   function sortByAge() {
     console.log("test");
     data.sort((a, b) => {
@@ -21,15 +22,6 @@ function App() {
     console.log(data[0].name);
     people.sort((a, b) => a.name.localeCompare(b.name));
   }
-
-  // function formatAge() {
-  // people.map((person) => {
-  //   const { id, name, image, age } = person;
-  //   age.slice(0, 5).split("/").reverse().join("/") + age.slice(5, 10);
-  // });
-  // }
-
-  // Also incorporate sort method (sort by alphabet and month)
 
   return (
     <>
@@ -48,13 +40,35 @@ function App() {
       <button className="btn" onClick={() => sortByAge()}>
         Sort By Age
       </button>
-      <button className="btn">Sort By Date</button>
       <br></br>
       {people.map((person) => {
         const { id, name, image, age } = person;
+
         // Format age so the day is displayed first and then the month
-        let birthYear =
-          age.slice(0, 5).split("/").reverse().join("/") + age.slice(5, 10);
+        const monthNames = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+
+        function getBirthDate() {
+          const date = new Date(age);
+          let getBirthMonth = monthNames[date.getMonth()]; // Looks at the Month Array and uses the persons month as the key
+          let getBirthYear = age.slice(6, 10); // Slices the age in the array and only returns the year.
+          let singleNumberDate = age.slice(3, 4); // Checks first number of the day e.g. if it's the 3rd it will return 0, if it's the 30th it will return 3.
+          return singleNumberDate === 0 // If single date then only return the single day e.g. the 5th would be 5, else (e.g. if it's the 25th) then it will return 25.
+            ? `${getBirthMonth} ${age.slice(4, 5)}, ${getBirthYear}`
+            : `${getBirthMonth} ${age.slice(3, 5)}, ${getBirthYear}`;
+        }
 
         // Work out age based on birth date
         let birthDate = new Date(age);
@@ -67,6 +81,8 @@ function App() {
         ) {
           years--;
         }
+        // if current month is lower than birth month than + 1 to age
+        console.log(years);
 
         return (
           <div className="container" key={id}>
@@ -77,9 +93,9 @@ function App() {
 
               <div>
                 <h3>
-                  {name} - {years} Years Old
+                  {name} - {years} years old
                 </h3>
-                <h4>{birthYear}</h4>
+                <h4>Birth Date - {getBirthDate()}</h4>
               </div>
             </div>
             <div className="button">
@@ -96,4 +112,7 @@ function App() {
 
 export default App;
 
-// 1) Try and get Facebook API implemented in once year and birthday works
+// 1) Ensure that months are ordered in the following e.g. Jan, feb march...
+// 2) Get sort by name function working
+// 3) Get sort by age function working
+// 4) // Try and see if you can implement facebook data (API) into birthdays
