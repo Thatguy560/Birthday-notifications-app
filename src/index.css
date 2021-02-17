@@ -65,7 +65,7 @@ h4 {
 
 .container .button .btn {
   background-color: white;
-  border-radius: 4%;
+  border-radius: 10%;
   border: 1px solid black;
   padding: 5px;
   color: black;
@@ -82,13 +82,18 @@ h4 {
 .btn {
   background-color: white;
   border: 1px solid black;
-  border-radius: 4%;
+  border-radius: 10%;
   padding: 5px;
   color: black;
   cursor: pointer;
   transition: .3s ease-out;
-  margin:auto;
-  display:block;
+  /* margin:auto;
+  display:block; 
+  float:left; */
+  margin-left:auto;
+  margin-right:0px;
+  margin-right: 25px;
+  
 }
 
 .btn:hover  {
