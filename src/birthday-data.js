@@ -5,14 +5,14 @@ export var data = [
     name: "Alesha Clifford",
     image:
       "https://images.pexels.com/photos/2951142/pexels-photo-2951142.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    age: "02/15/1999",
+    age: "02/20/1999",
   },
   {
     id: 2,
     name: "Danish McBride",
     image:
       "https://images.pexels.com/photos/3031397/pexels-photo-3031397.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    age: "10/20/1990",
+    age: "10/20/1995",
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ export var data = [
     name: "Lindsey Zavala",
     image:
       "https://images.pexels.com/photos/1382731/pexels-photo-1382731.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    age: "10/07/1995",
+    age: "01/07/1995",
   },
   {
     id: 5,

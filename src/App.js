@@ -5,11 +5,11 @@ import { data } from "./birthday-data";
 function App() {
   const [people, setPeople] = useState(data);
 
+  // We call this function when we click on the dismiss button
   function removePerson(id) {
     let newPerson = people.filter((person) => person.id !== id);
     setPeople(newPerson);
   }
-
   // Get function working
   function sortByAge() {
     console.log("test");
@@ -23,11 +23,18 @@ function App() {
     people.sort((a, b) => a.name.localeCompare(b.name));
   }
 
+  function test() {
+    people.map((person) => {
+      const { id, name, image, age } = person;
+      console.log(age);
+    });
+  }
+
   return (
     <>
       <h1>
         {people.length > 0
-          ? `${people.length} Birthday Reminders`
+          ? `${people.length} Birthday Reminder(s)`
           : "All Caught Up On Birthday Reminders"}
       </h1>
       <br></br>
@@ -37,14 +44,23 @@ function App() {
       <button className="btn" onClick={() => sortByName()}>
         Sort By Name
       </button>
-      <button className="btn" onClick={() => sortByAge()}>
+      <button className="btn" onClick={() => test()}>
         Sort By Age
       </button>
       <br></br>
+
       {people.map((person) => {
         const { id, name, image, age } = person;
 
-        // Format age so the day is displayed first and then the month
+        // This method will (Hopefully) order the birthdays from jan, feb, march etc.
+        function returnBasedOnBirth() {
+          console.log(
+            data.map((people) => {
+              return people.age;
+            })
+          );
+        }
+
         const monthNames = [
           "January",
           "February",
@@ -60,6 +76,7 @@ function App() {
           "December",
         ];
 
+        // Formats Birth date in the format month/Day, year
         function getBirthDate() {
           const date = new Date(age);
           let getBirthMonth = monthNames[date.getMonth()]; // Looks at the Month Array and uses the persons month as the key
@@ -70,19 +87,49 @@ function App() {
             : `${getBirthMonth} ${age.slice(3, 5)}, ${getBirthYear}`;
         }
 
-        // Work out age based on birth date
+        // This code Work out age based on birth date
         let birthDate = new Date(age);
-        let otherDate = new Date();
-        var years = otherDate.getFullYear() - birthDate.getFullYear();
+        let currentDate = new Date();
+        var years = currentDate.getFullYear() - birthDate.getFullYear();
         if (
-          otherDate.getMonth() < birthDate.getMonth() ||
-          (otherDate.getMonth() === birthDate.getMonth() &&
-            otherDate.getDate() < birthDate.getDate())
+          currentDate.getMonth() < birthDate.getMonth() ||
+          (currentDate.getMonth() === birthDate.getMonth() &&
+            currentDate.getDate() < birthDate.getDate())
         ) {
           years--;
         }
-        // if current month is lower than birth month than + 1 to age
+
+        // getMonth() method returns the month of a date as a number from 0 to 11. To get the correct month, add 1.
+        let currentMonth = currentDate.getMonth() + 1;
+        let birthMonth = birthDate.getMonth() + 1;
+        let currentDay = currentDate.getDate();
+        let birthDay = birthDate.getDate();
         console.log(years);
+
+        // if current month is lower than birth month than + 1 to age
+        function CalculateTimeToBirthday() {
+          if (currentMonth === birthMonth && birthDay < currentDay)
+            return `Turned ${years} years old ${Math.abs(
+              birthDay - currentDay
+            )} day(s) ago`;
+          if (currentMonth === birthMonth && birthDay > currentDay)
+            return ` Will be ${years + 1} years old in ${
+              birthDay - currentDay
+            } day(s)`;
+          if (currentMonth + 1 === birthMonth)
+            return ` Will be ${years + 1} years old next month`;
+          if (currentMonth < birthMonth)
+            return ` Will be ${years + 1} years old in ${
+              birthMonth - currentMonth
+            } months`;
+          if (currentMonth === birthMonth && birthDay === currentDay)
+            return "Birthday is Today";
+          // To ammend Method (Check if correct)
+          if (currentMonth >= birthMonth + 1)
+            return ` Will be ${years + 1} years old in ${
+              birthMonth + (12 - currentMonth)
+            } months`;
+        }
 
         return (
           <div className="container" key={id}>
@@ -93,8 +140,9 @@ function App() {
 
               <div>
                 <h3>
-                  {name} - {years} years old
+                  {name} - {CalculateTimeToBirthday()}
                 </h3>
+
                 <h4>Birth Date - {getBirthDate()}</h4>
               </div>
             </div>
@@ -116,3 +164,12 @@ export default App;
 // 2) Get sort by name function working
 // 3) Get sort by age function working
 // 4) // Try and see if you can implement facebook data (API) into birthdays
+
+// function NameList() {
+// 	const names = ['Bruce', 'Clark', 'Diana']
+//     return (
+//     	<div>
+//       {names.map(name => <h2>{name}</h2>)}
+//       	</div>
+//     )
+// }
