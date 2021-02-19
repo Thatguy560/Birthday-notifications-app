@@ -7,20 +7,20 @@ function App() {
 
   // We call this function when we click on the dismiss button
   function removePerson(id) {
-    let newPerson = people.filter((person) => person.id !== id);
-    setPeople(newPerson);
+    setPeople(people.filter((person) => person.id !== id));
   }
+
+  // This function sorts the names alphabetically and then updates the state.
+  function sortByName() {
+    setPeople([...data].sort((a, b) => a.name.localeCompare(b.name)));
+  }
+
   // Get function working
   function sortByAge() {
     console.log("test");
     data.sort((a, b) => {
       return new Date(a.age).getFullYear() - new Date(b.age).getFullYear();
     });
-  }
-
-  function sortByName() {
-    console.log(data[0].name);
-    people.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   function test() {
@@ -104,7 +104,6 @@ function App() {
         let birthMonth = birthDate.getMonth() + 1;
         let currentDay = currentDate.getDate();
         let birthDay = birthDate.getDate();
-        console.log(years);
 
         // if current month is lower than birth month than + 1 to age
         function CalculateTimeToBirthday() {
@@ -124,7 +123,7 @@ function App() {
             } months`;
           if (currentMonth === birthMonth && birthDay === currentDay)
             return "Birthday is Today";
-          // To ammend Method (Check if correct)
+          // To amend Method (Check if correct)
           if (currentMonth >= birthMonth + 1)
             return ` Will be ${years + 1} years old in ${
               birthMonth + (12 - currentMonth)
@@ -132,6 +131,8 @@ function App() {
         }
 
         return (
+          // <section>
+          // <h3>January</h3>
           <div className="container" key={id}>
             <div className="avatar">
               <div>
@@ -152,6 +153,7 @@ function App() {
               </button>
             </div>
           </div>
+          // </section>
         );
       })}
     </>
@@ -161,15 +163,5 @@ function App() {
 export default App;
 
 // 1) Ensure that months are ordered in the following e.g. Jan, feb march...
-// 2) Get sort by name function working
-// 3) Get sort by age function working
-// 4) // Try and see if you can implement facebook data (API) into birthdays
-
-// function NameList() {
-// 	const names = ['Bruce', 'Clark', 'Diana']
-//     return (
-//     	<div>
-//       {names.map(name => <h2>{name}</h2>)}
-//       	</div>
-//     )
-// }
+// 2) Get sort by age function working
+// 3) // Try and see if you can implement facebook data (API) into birthdays
