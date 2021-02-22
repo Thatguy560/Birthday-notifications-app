@@ -12,7 +12,7 @@ export var data = [
     name: "Danish McBride",
     image:
       "https://images.pexels.com/photos/3031397/pexels-photo-3031397.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    age: "10/20/1995",
+    age: "01/08/1995",
   },
   {
     id: 3,
