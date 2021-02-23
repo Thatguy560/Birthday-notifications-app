@@ -17,14 +17,12 @@ class App extends Component {
     this.setState(this.baseState);
   };
 
-  // We call this function when we click on the dismiss button
   removePerson = (index) => {
     const newPerson = [...this.state.data];
     newPerson.splice(index, 1);
     this.setState({ data: newPerson });
   };
 
-  // This function sorts the names alphabetically and then updates the state
   sortByAToZ = () => {
     let alphabeticSort = [...this.state.data].sort((a, b) =>
       a.name.localeCompare(b.name)
@@ -39,18 +37,18 @@ class App extends Component {
     this.setState({ data: reverseAlphabeticSort });
   };
 
-  sortByOldest = () => {
+  sortByOldestToYoungest = () => {
     let olderToYoungerSort = [...this.state.data].sort(
       (a, b) => new Date(a.age) - new Date(b.age)
     );
     this.setState({ data: olderToYoungerSort });
   };
 
-  sortByYoungest = () => {
-    let YoungerToOlderSort = [...this.state.data].sort(
+  sortByYoungestToOldest = () => {
+    let youngerToOlderSort = [...this.state.data].sort(
       (a, b) => new Date(b.age) - new Date(a.age)
     );
-    this.setState({ data: YoungerToOlderSort });
+    this.setState({ data: youngerToOlderSort });
   };
 
   sortByJanuary = () => {
@@ -143,10 +141,10 @@ class App extends Component {
         <button className="btn" onClick={this.sortByZToA}>
           Sort By Z - A
         </button>
-        <button className="btn" onClick={this.sortByYoungest}>
+        <button className="btn" onClick={this.sortByYoungestToOldest}>
           Sort By Youngest
         </button>
-        <button className="btn" onClick={this.sortByOldest}>
+        <button className="btn" onClick={this.sortByOldestToYoungest}>
           Sort By Oldest
         </button>
         <br></br>
@@ -292,4 +290,4 @@ class App extends Component {
 
 export default App;
 
-// 2) Try and see if you can implement facebook data (API) into birthdays
+// 1) Try and see if you can implement facebook data (API) into birthdays
