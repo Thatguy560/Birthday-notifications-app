@@ -8,21 +8,13 @@ class App extends Component {
     super(props);
 
     this.state = {
-      data: data, // Data array
+      data: data.sort((a, b) => a.age.localeCompare(b.age)),
     };
     this.baseState = this.state;
   }
 
   restoreData = () => {
     this.setState(this.baseState);
-  };
-
-  // Sorts out birthday's in day/month order e.g. Jan, Feb, March etc.
-  componentDidMount = () => {
-    let ageSort = [...this.state.data].sort((a, b) =>
-      a.age.localeCompare(b.age)
-    );
-    this.setState({ data: ageSort });
   };
 
   // We call this function when we click on the dismiss button
@@ -174,4 +166,4 @@ class App extends Component {
 export default App;
 
 // 1) Get sort by age function working
-// 2) // Try and see if you can implement facebook data (API) into birthdays
+// 2) Try and see if you can implement facebook data (API) into birthdays
