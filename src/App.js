@@ -25,19 +25,33 @@ class App extends Component {
   };
 
   // This function sorts the names alphabetically and then updates the state
-  sortByName = () => {
+  sortByAToZ = () => {
     let alphabeticSort = [...this.state.data].sort((a, b) =>
       a.name.localeCompare(b.name)
     );
     this.setState({ data: alphabeticSort });
   };
 
-  // sortByAge = () => {
-  //   let ageSort = [...this.state.data].sort((a, b) =>
-  //     new Date(a.age).getFullYear().localeCompare(new Date(b.age).getFullYear())
-  //   );
-  //   this.setState({ data: ageSort });
-  // };
+  sortByZToA = () => {
+    let reverseAlphabeticSort = [...this.state.data].sort((a, b) =>
+      b.name.localeCompare(a.name)
+    );
+    this.setState({ data: reverseAlphabeticSort });
+  };
+
+  sortByOldest = () => {
+    let olderToYoungerSort = [...this.state.data].sort(
+      (a, b) => new Date(a.age) - new Date(b.age)
+    );
+    this.setState({ data: olderToYoungerSort });
+  };
+
+  sortByYoungest = () => {
+    let YoungerToOlderSort = [...this.state.data].sort(
+      (a, b) => new Date(b.age) - new Date(a.age)
+    );
+    this.setState({ data: YoungerToOlderSort });
+  };
 
   render() {
     return (
@@ -49,13 +63,19 @@ class App extends Component {
         </h1>
         <br></br>
         <button className="btn" onClick={this.restoreData}>
-          Restore Reminders
+          Reset Reminders
         </button>
-        <button className="btn" onClick={this.sortByName}>
-          Sort By Name
+        <button className="btn" onClick={this.sortByAToZ}>
+          Sort By A - Z
         </button>
-        <button className="btn" onClick={this.sortByAge}>
-          Sort By Age
+        <button className="btn" onClick={this.sortByZToA}>
+          Sort By Z - A
+        </button>
+        <button className="btn" onClick={this.sortByYoungest}>
+          Sort By Youngest
+        </button>
+        <button className="btn" onClick={this.sortByOldest}>
+          Sort By Oldest
         </button>
         <br></br>
         {this.state.data.map((person) => {
@@ -122,7 +142,7 @@ class App extends Component {
                 birthMonth - currentMonth
               } months`;
             if (currentMonth === birthMonth && birthDay === currentDay)
-              return "Birthday is Today";
+              return "BIRTHDAY IS TODAY DON'T FORGET TO WISH THEM A HAPPY BIRTHDAY";
             // To amend Method (Check if correct)
             if (currentMonth >= birthMonth + 1)
               return ` Will be ${years + 1} years old in ${
@@ -165,5 +185,4 @@ class App extends Component {
 
 export default App;
 
-// 1) Get sort by age function working
 // 2) Try and see if you can implement facebook data (API) into birthdays
