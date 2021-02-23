@@ -53,6 +53,78 @@ class App extends Component {
     this.setState({ data: YoungerToOlderSort });
   };
 
+  sortByJanuary = () => {
+    this.setState({
+      data: this.state.data.filter((person) => person.age.slice(0, 2) === "01"),
+    });
+  };
+
+  sortByFebruary = () => {
+    this.setState({
+      data: this.state.data.filter((person) => person.age.slice(0, 2) === "02"),
+    });
+  };
+
+  sortByMarch = () => {
+    this.setState({
+      data: this.state.data.filter((person) => person.age.slice(0, 2) === "03"),
+    });
+  };
+
+  sortByApril = () => {
+    this.setState({
+      data: this.state.data.filter((person) => person.age.slice(0, 2) === "04"),
+    });
+  };
+
+  sortByMay = () => {
+    this.setState({
+      data: this.state.data.filter((person) => person.age.slice(0, 2) === "05"),
+    });
+  };
+
+  sortByJune = () => {
+    this.setState({
+      data: this.state.data.filter((person) => person.age.slice(0, 2) === "06"),
+    });
+  };
+
+  sortByJuly = () => {
+    this.setState({
+      data: this.state.data.filter((person) => person.age.slice(0, 2) === "07"),
+    });
+  };
+
+  sortByAugust = () => {
+    this.setState({
+      data: this.state.data.filter((person) => person.age.slice(0, 2) === "08"),
+    });
+  };
+
+  sortBySeptember = () => {
+    this.setState({
+      data: this.state.data.filter((person) => person.age.slice(0, 2) === "09"),
+    });
+  };
+
+  sortByOctober = () => {
+    this.setState({
+      data: this.state.data.filter((person) => person.age.slice(0, 2) === "10"),
+    });
+  };
+
+  sortByNovember = () => {
+    this.setState({
+      data: this.state.data.filter((person) => person.age.slice(0, 2) === "11"),
+    });
+  };
+
+  sortByDecember = () => {
+    this.setState({
+      data: this.state.data.filter((person) => person.age.slice(0, 2) === "12"),
+    });
+  };
+
   render() {
     return (
       <div>
@@ -78,6 +150,44 @@ class App extends Component {
           Sort By Oldest
         </button>
         <br></br>
+        <br></br>
+        <button className="btn" onClick={this.sortByJanuary}>
+          Sort By Jan
+        </button>
+        <button className="btn" onClick={this.sortByFebruary}>
+          Sort By Feb
+        </button>
+        <button className="btn" onClick={this.sortByMarch}>
+          Sort By Mar
+        </button>
+        <button className="btn" onClick={this.sortByApril}>
+          Sort By Apr
+        </button>
+        <button className="btn" onClick={this.sortByMay}>
+          Sort By May
+        </button>
+        <button className="btn" onClick={this.sortByJune}>
+          Sort By June
+        </button>
+        <button className="btn" onClick={this.sortByJuly}>
+          Sort By July
+        </button>
+        <button className="btn" onClick={this.sortByAugust}>
+          Sort By Aug
+        </button>
+        <button className="btn" onClick={this.sortBySeptember}>
+          Sort By Sep
+        </button>
+        <button className="btn" onClick={this.sortByOctober}>
+          Sort By Oct
+        </button>
+        <button className="btn" onClick={this.sortByNovember}>
+          Sort By Nov
+        </button>
+        <button className="btn" onClick={this.sortByDecember}>
+          Sort By Dec
+        </button>
+
         {this.state.data.map((person) => {
           const { id, name, image, age } = person;
 
@@ -152,8 +262,6 @@ class App extends Component {
 
           return (
             <>
-              {/* <section> */}
-              {/* <h3>January</h3> */}
               <div className="container" key={id}>
                 <div className="avatar">
                   <div>
@@ -174,7 +282,6 @@ class App extends Component {
                   </button>
                 </div>
               </div>
-              {/* </section> */}
             </>
           );
         })}
