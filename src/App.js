@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { render } from "@testing-library/react";
 import { data } from "./birthday-data";
+import ReactFacebookLogin from "./facebookLogin";
+
 // import FacebookLogin from "react-facebook-login";
 
 class App extends Component {
@@ -131,6 +133,9 @@ class App extends Component {
             ? `${this.state.data.length} Birthday Reminder(s)`
             : "All Caught Up On Birthday Reminders"}
         </h1>
+        <br></br>
+        <br></br>
+        <ReactFacebookLogin />
         <br></br>
         <button className="btn" onClick={this.restoreData}>
           Reset Reminders
