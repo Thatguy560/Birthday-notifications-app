@@ -1,10 +1,10 @@
-# Birthday Reminder App (To write)
+# Birthday Reminder App
 
 <p align="center">
   <img src="DemoOfApp.gif" alt="animated" />
 </p>
 
-explanation on what the app does...
+A birthday reminder app created with React (created with the intention of practicing React). This app shows a arbitrary list of people with their pictures, names and ages. I've created functions which allow the user to filter birthday by month, dismiss certain birthday reminders, reset them and sort by age and A-Z or Z-A.
 # Installation
 
 1. Clone the repo
